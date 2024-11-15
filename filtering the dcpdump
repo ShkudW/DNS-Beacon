@@ -1,0 +1,1 @@
+cat g | grep 'CNAME?' | grep -v 'admin.menorraitdev.net.' | awk '{for(i=1;i<=NF;i++) if ($i ~ /CNAME\?/) {split($(i+1),a,"."); print substr(a[2],1) "|" substr(a[1],5)}}' | sort -t"|" -k2,2n | awk -F"|" '{printf "%s", $1}' && echo
